@@ -12,7 +12,7 @@
     const apikey="z2LQNc66PGXSv6YHaNJ10LFBEPMOSq7N";
 
     // construct URL
-    const queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=" + apikey + "&limit=5";
+    const queryURL = "https://api.giphy.com/v1/gifs/search?q=" + gif + "&api_key=" + apikey + "&limit=5";
 
     // multi-task with fetch promise
 
