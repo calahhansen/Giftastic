@@ -1,16 +1,35 @@
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Have a Giftastic Day!</title>
-    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/styles.css" />
 </head>
+
 <body>
+    <div class="main">
+        <h1>Feeling stuck or in a bad funk?  Click on a button to brighten your day!</h1>
 
+        <!-- User will input data here -->
+        <form id="gif-form">
+            <label for="gif-input">What else makes you feel better?</label>
+            <input type="text" id="gif-input"><br>
 
+            <!-- This button will trigger our AJAX call -->
+            <input id="find-gif" type="submit" value="Restart my Day">
+        </form>
 
-    <script src="assets/app.js">
-    </script>
+        <!-- We'll be dumping our JSON contents in here -->
+        <div id="gif-view"></div>
+
+        <script type="text/javascript" src="assets/app.js">
+           
+        </script>
+    </div>
 </body>
+
 </html>
