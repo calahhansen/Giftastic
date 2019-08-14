@@ -27,7 +27,7 @@ function displayTopicInfo() {
             const results = responseJson.data;
             console.log(results);
             for (var i = 0; i < results.length; i++) {
-                // My attempt to create a div to hold the giphys - needs more work/help (tutor suggestion below)
+                // My attempt to create a div to hold the topics - needs more work/help (tutor suggestion below)
                 const topicDiv = document.createElement("div");
                 topicDiv.classList.add("topic");
                 //Gather the rating data
@@ -75,11 +75,11 @@ function displayTopicInfo() {
             // (this is necessary otherwise you will have repeat buttons)
             document.getElementById("buttons-view").innerHTML = "";
 
-            // Looping through the array of gifs
+            // Looping through the array of topics
             for (let i = 0; i < topics.length; i++) {
-                // Then dynamically generating buttons for each gif in the array
+                // Then dynamically generating buttons for each topic in the array
                 const a = document.createElement("button");
-                // Adding a class of gif to our button
+                // Adding a class of topic to our button
                 a.classList.add("topic");
                 // Adding a data-attribute
                 a.setAttribute("data-name", topics[i]);
@@ -87,7 +87,6 @@ function displayTopicInfo() {
                 a.innerHTML = topics[i];
                 // Adding the button to the buttons-view div
                 document.getElementById("buttons-view").append(a);
-
                 // Function for displaying the gif info
                 a.addEventListener("click", displayTopicInfo);
             }
