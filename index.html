@@ -18,22 +18,23 @@
         <div id="buttons-view"></div>
 
         <!-- User will input data here -->
-        <form id="gif-form">
-            <label for="gif-input">What else makes you feel better?</label>
-            <input type="text" id="gif-input"><br>
+        <form id="topic-form">
+            <label for="topic-input">What else makes you feel better?</label>
+            <input type="text" id="topic-input"><br>
 
             <!-- This button will trigger our AJAX call -->
-            <input id="find-gif" type="submit" value="Restart my Day">
+            <input id="find-topic" type="submit" value="Restart my Day">
         </form>
 
         <!-- We'll be dumping our JSON contents in here -->
-        <div id="gif-view">
+        <div id="topics-view">
             
         </div>
 
-        <!-- I want to set up a gifdiv to show the rating and image elements do I need a separate div for this or can I combine it in the gif-view div but not show all the JSON??-->
-        <div id="gifdiv">
+        <!-- I want to set up a topicdiv to show the rating and image elements do I need a separate div for this or can I combine it in the topics-view div but not show all the JSON??-->
+        <div class="topic-container">
             <p id="rating"></p>
+            <img id="still">
             
         </div>
 
