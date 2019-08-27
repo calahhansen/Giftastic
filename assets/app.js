@@ -15,7 +15,7 @@ function displayTopicInfo() {
 
     // construct URL
     const queryURL = "https://api.giphy.com/v1/gifs/search?api_key=" + apikey + "&q=" + topic + "&limit=" + gifslimit + "&offset=0&rating=" + gifsratings + "&lang=en";
-
+console.log("queryURL", queryURL);
     // const queryURL = "http://api.giphy.com/v1/gifs/search?q=" + gifs + "&api_key=z2LQNc66PGXSv6YHaNJ10LFBEPMOSq7N&limit=10"; tutor URL
     // multi-task with fetch promise
 
@@ -24,18 +24,26 @@ function displayTopicInfo() {
             return response.json()
         })
         .then(function (responseJson) {
+            // console.log("responseJson", responseJson);
             const results = responseJson.data;
-            console.log(results);
+            // console.log('results before loop', results);
             for (var i = 0; i < results.length; i++) {
                 // My attempt to create a div to hold the topics - needs more work/help (tutor suggestion below)
                 const topicDiv = document.createElement("div");
                 topicDiv.classList.add("topic");
+                // console.log('topiDiv', topicDiv);
                 //Gather the rating data
                 const rating = results[i].rating;
+                // console.log('rating', rating);
                 // Creat an element to have the rating displayed
-                const ratingEl = document.createElement("rating")
+                const ratingEl = document.createElement("p");
+                ratingEl.classList.add("rating");
+
+                // console.log('ratingEl', ratingEl);
+                
                 // Display rating
                 ratingEl.innerHTML = "Rating: " + rating;
+                topicDiv.append(ratingEl);
                 // Gather animated image
                 // const animatedURL = results[i].data.data.images.original_mp4.url;
                 //Creat an element to hold animated image
@@ -43,9 +51,22 @@ function displayTopicInfo() {
                 // animated.setAttribute("src", animatedURL);
                 // Gather the still image
                 const stillURL = results[i].images.fixed_height_still.url;
+                // console.log('results of still url', stillURL);
                 // Create an element to hold still image
-                const still = document.createElement("img-still");
+                const still = document.createElement("img");
+                // create an image tag element by const still = <img /> tag
+                // console.log("still", still);
                 still.setAttribute("src", stillURL);
+                //<img src ="hfjkgdhfghvbhm" />
+
+                const animateUrl = results[i].images.fixed_height.url;
+                still.setAttribute("data-state", "still");
+                //<img src ="hfjkgdhfghvbhm" data-state="still" />
+                still.setAttribute("class", "img-gif");
+                //<img src ="hfjkgdhfghvbhm" data-state="still" class="img-gif" onclick=changeAnimate() />
+                still.setAttribute('onclick', 'changeAnimate()');
+                still.setAttribute("data-animate", animateUrl);
+                still.setAttribute("data-still", stillURL);
                 // Appending the image
                 topicDiv.append(still);
                 // Put the topic above the previous topics
@@ -69,6 +90,12 @@ function displayTopicInfo() {
 
             });
         }
+        function changeAnimate(){
+            console.log("work on animating the gif");
+            document.getElementsByClassName("img-gif") = "animateURL";
+
+        }
+        
         // Function for displaying topic data
         function renderButtons() {
             // Deleting the buttons prior to adding new topic
