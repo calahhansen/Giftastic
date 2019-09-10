@@ -31,6 +31,7 @@ function displayTopicInfo() {
                 // My attempt to create a div to hold the topics - needs more work/help (tutor suggestion below)
                 const topicDiv = document.createElement("div");
                 topicDiv.classList.add("topic");
+                //console.log("results:" +JSON.stringify(results[i]));
                 // console.log('topiDiv', topicDiv);
                 //Gather the rating data
                 const rating = results[i].rating;
@@ -53,17 +54,17 @@ function displayTopicInfo() {
                 const stillURL = results[i].images.fixed_height_still.url;
                 // console.log('results of still url', stillURL);
                 // Create an element to hold still image
-                const still = document.createElement("img");
+                const still = document.createElement("img");//<img/>
                 // create an image tag element by const still = <img /> tag
                 // console.log("still", still);
-                still.setAttribute("src", stillURL);
+                still.setAttribute("src", stillURL);//<img src="sdgsdhdfj" />
                 //<img src ="hfjkgdhfghvbhm" />
 
                 const animateUrl = results[i].images.fixed_height.url;
                 still.setAttribute("data-state", "still");
                 //<img src ="hfjkgdhfghvbhm" data-state="still" />
                 still.setAttribute("id", "img-gif");
-                // still.setAttribute("onclick", mFunction());
+                still.addEventListener("click",changeAnimate)
                 //<img src ="hfjkgdhfghvbhm" data-state="still" class="img-gif" onclick=changeAnimate() />
                 // still.setAttribute('onclick', 'changeAnimate()');
                 still.setAttribute("data-animate", animateUrl);
@@ -91,11 +92,24 @@ function displayTopicInfo() {
 
         });
 }
-// function changeAnimate() {
-//     console.log("work on animating the gif");
-//     element.getElementsByClassName("img-gif") = "animateURL";
+// still === Still => false still == Still => true
+function changeAnimate() {
+    console.log("work on animating the gif");
+    var state = this.getAttribute("data-state");
+    console.log("state is : " +state);
+    if(state == "still"){
+        var animate_url = this.getAttribute("data-animate");
+        this.setAttribute("src", animate_url);
+        this.setAttribute("data-state", "animate");
+    }
+    if(state == "animate"){
+        var still_url = this.getAttribute("data-still");
+        this.setAttribute("src", still_url);
+        this.setAttribute("data-state", "still");
+    }
+   
 
-// }
+}
 
 // Function for displaying topic data
 function renderButtons() {
@@ -138,21 +152,17 @@ document.getElementById("find-topic").addEventListener("click", function (event)
 //     console.log("on click");
 //     var state = e.getAttribute("data-state");
 // });
-window.onload = function () {
-    var el = document.getElementById('img-gif');
-    console.log("el: " + el);
-    if (el) {
-        el.addEventListener('click', changeAnimate);
-    }
-    else {
-        console.log("not having anything");
-    }
-}
-function changeAnimate() {
-    // var state = e.getAttribute('data-state');
-    // console.log("state: "+state);
-    console.log("animate gif ");
-}
+// window.onload = function () {
+//     var el = document.getElementById('img-gif');
+//     console.log("el: " + el);
+//     if (el) {
+//         el.addEventListener('click', changeAnimate);
+//     }
+//     else {
+//         console.log("not having anything");
+//     }
+// }
+
 // Calling the renderButtons function to display the intial buttons
 renderButtons();
 
