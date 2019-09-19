@@ -1,6 +1,6 @@
 # Giftastic
 Having a bad day?  Click on the buttons for ideas to restart your day or add your own ideas!
-[View Giftastic])https://calahhansen.github.io/Giftastic/index.html)
+[View Giftastic](https://calahhansen.github.io/Giftastic/index.html)
 
 
 # Description of the Project
